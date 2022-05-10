@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.deasa10.screens.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_selectTeamFragment"
+            app:destination="@id/selectTeamFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectTeamFragment"
+        android:name="com.example.deasa10.screens.SelectTeamFragment"
+        android:label="fragment_select_team"
+        tools:layout="@layout/fragment_select_team" >
+        <action
+            android:id="@+id/action_selectTeamFragment_to_teamDialogFragment"
+            app:destination="@id/teamDialogFragment" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="name" />
+        <action
+            android:id="@+id/action_selectTeamFragment_to_deAsaStageFragment"
+            app:destination="@id/deAsaStageFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/teamDialogFragment"
+        android:name="com.example.deasa10.screens.dialogScreens.TeamDialogFragment"
+        android:label="fragment_team_dialog"
+        tools:layout="@layout/fragment_team_dialog" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="Name" />
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_teamDialogFragment_to_selectTeamFragment"
+            app:destination="@id/selectTeamFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/deAsaStageFragment"
+        android:name="com.example.deasa10.screens.DeAsaStageFragment"
+        android:label="fragment_de_asa_stage"
+        tools:layout="@layout/fragment_de_asa_stage" >
+        <action
+            android:id="@+id/action_deAsaStageFragment_to_pointFragment"
+            app:destination="@id/pointFragment" />
+        <argument
+            android:name="queue"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/pointFragment"
+        android:name="com.example.deasa10.screens.PointFragment"
+        android:label="fragment_point"
+        tools:layout="@layout/fragment_point" >
+        <action
+            android:id="@+id/action_pointFragment_to_deAsaStageFragment"
+            app:destination="@id/deAsaStageFragment" />
+        <argument
+            android:name="queue"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="point"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>
