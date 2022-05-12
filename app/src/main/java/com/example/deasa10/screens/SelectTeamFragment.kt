@@ -50,17 +50,32 @@ class SelectTeamFragment : Fragment() {
             if (it.id == 3) {
                 findNavController().navigate(SelectTeamFragmentDirections.actionSelectTeamFragmentToTeamDialogFragment(it.secondPlayer, 3))
             }
+
         }
 
 
 
-        teamViewModel.liveDataTeam.observe(viewLifecycleOwner, Observer {
-            binding.tvTeams.text = it.toString()
-        })
+//        teamViewModel.liveDataTeam.observe(viewLifecycleOwner, Observer {
+//            binding.tvTeams.text = it.toString()
+//        })
 
         binding.rvTeams.adapter = teamAdapter
 
-        teamViewModel.getTeams().observe(viewLifecycleOwner, Observer {
+//        teamViewModel.getTeams().observe(viewLifecycleOwner, Observer {
+//            it.forEach {
+//                list.add(
+//                    Teams(it.id, it.team, it.firstPlayer, it.secondPlayer)
+//                )
+//            }
+//        })
+
+
+            teamViewModel.rename(DataList.teamList)
+
+
+
+
+        teamViewModel.teamName.observe(viewLifecycleOwner, Observer {
             it.forEach {
                 list.add(
                     Teams(it.id, it.team, it.firstPlayer, it.secondPlayer)
@@ -70,6 +85,10 @@ class SelectTeamFragment : Fragment() {
 
         binding.btnStart.setOnClickListener {
             findNavController().navigate(R.id.action_selectTeamFragment_to_deAsaStageFragment)
+        }
+
+        binding.tvTeams.setOnClickListener {
+            teamAdapter.notifyDataSetChanged()
         }
 
     }

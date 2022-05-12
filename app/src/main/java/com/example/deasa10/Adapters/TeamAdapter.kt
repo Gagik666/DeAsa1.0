@@ -16,8 +16,6 @@ class TeamAdapter(
     inner class TeamViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var binding = ItemTeamsBinding.bind(itemView)
 
-
-
         fun bind(teams: Teams, index: Int) = with(binding) {
             tvTeam.text = teams.team
             tvPlayer1.text = teams.firstPlayer
@@ -27,6 +25,7 @@ class TeamAdapter(
             tvTeam.setOnClickListener {
                 teams.id = 1
                 onClickItem.invoke(teams)
+
             }
 
             tvPlayer1.setOnClickListener {

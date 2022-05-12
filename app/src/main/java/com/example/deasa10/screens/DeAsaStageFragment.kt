@@ -83,8 +83,7 @@ class DeAsaStageFragment : Fragment() {
                 if (i == 0) {
                     findNavController().navigate(
                         DeAsaStageFragmentDirections.actionDeAsaStageFragmentToPointFragment(
-                            queue,
-                            binding.tvPoint.text.toString().toInt()
+                            queue
                         )
                     )
                     tempList.clear()
@@ -95,7 +94,7 @@ class DeAsaStageFragment : Fragment() {
     }
 
     fun getSingerTempList(): MutableList<String> {
-        for (i in 1..5) {
+        for (i in 1..6) {
             val randomSinger = (0..20).random()
             tempList.add(DataList.singerList[randomSinger].toString())
         }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#ef5350"
     android:padding="32dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".screens.StartFragment">
@@ -11,20 +11,37 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="De Asa"
-        android:textColor="@color/black"
-        android:textSize="28sp"
+        android:text="DeAsa"
+        android:textColor="#ffee58"
+        android:textSize="50sp"
         android:textStyle="bold"
+        android:layout_marginBottom="200dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <Button
-        android:id="@+id/btnPlayInTeams"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play in teams"
+        app:strokeColor="#ffee58"
+        app:strokeWidth="3dp"
+        app:cardCornerRadius="50dp"
+        android:backgroundTint="#ab000d"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/btnPlayInTeams"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ab000d"
+            android:text="Play in teams"
+            android:textColor="@color/white"
+            />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

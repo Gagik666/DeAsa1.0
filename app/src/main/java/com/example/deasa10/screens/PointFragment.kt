@@ -13,7 +13,7 @@ import com.example.deasa10.databinding.FragmentPointBinding
 class PointFragment : Fragment() {
     lateinit var binding: FragmentPointBinding
     private val args: PointFragmentArgs by navArgs()
-    var queue = 2
+    var queue = 1
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,9 +26,9 @@ class PointFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         queue = args.queue
         var count = queue
-        if (count == 0)
+        if (count == 0) {
             count = 1
-        binding.tvTeam1Point.text = args.point.toString()
+        }
 
         if (queue == 4) {
             binding.btnPlay.visibility = View.INVISIBLE
