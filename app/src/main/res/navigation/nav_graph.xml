@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_startFragment_to_selectTeamFragment"
             app:destination="@id/selectTeamFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
     </fragment>
     <fragment
         android:id="@+id/selectTeamFragment"
@@ -59,6 +62,10 @@
             android:name="queue"
             app:argType="integer"
             android:defaultValue="0" />
+        <argument
+            android:name="point1"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/pointFragment"
@@ -77,4 +84,18 @@
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.example.deasa10.screens.LogInFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_logInFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.deasa10.screens.registerFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
 </navigation>

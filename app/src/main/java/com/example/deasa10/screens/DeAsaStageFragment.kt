@@ -28,6 +28,8 @@ class DeAsaStageFragment : Fragment() {
     private val args: DeAsaStageFragmentArgs by navArgs()
     lateinit var list: MutableList<String>
     var queue = 1
+    var point1 = 0
+    var point2 = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,22 +45,28 @@ class DeAsaStageFragment : Fragment() {
             seconsd()
         }
         singerViewModel = ViewModelProvider(this).get(SingerViewModel::class.java)
-
         var count = args.queue
         queue = count
-
         getSingerTempList()
         binding.rvSinger.layoutManager = LinearLayoutManager(this.context)
         singerAdapter = SingerAdapter(tempList.toMutableSet().toMutableList()) {
-            var countPoint = 0
-            countPoint++
             singerViewModel.getPoint(1)
 
         }
         binding.rvSinger.adapter = singerAdapter
 
         singerViewModel.liveDataPoint.observe(viewLifecycleOwner, Observer {
+            if (queue == 3) {
+                point1 = it
+            } else if (queue == 2 || queue == 4) {
+                DataList.teamPointList.forEach {
+                    it.team2 = it.toString().toInt()
+                }
+            } else {
+                point1 = it
+            }
             binding.tvPoint.text = "Point $it"
+
         })
 
 
@@ -83,7 +91,7 @@ class DeAsaStageFragment : Fragment() {
                 if (i == 0) {
                     findNavController().navigate(
                         DeAsaStageFragmentDirections.actionDeAsaStageFragmentToPointFragment(
-                            queue
+                            queue, point1
                         )
                     )
                     tempList.clear()
@@ -95,7 +103,7 @@ class DeAsaStageFragment : Fragment() {
 
     fun getSingerTempList(): MutableList<String> {
         for (i in 1..6) {
-            val randomSinger = (0..20).random()
+            val randomSinger = (0..19).random()
             tempList.add(DataList.singerList[randomSinger].toString())
         }
         return tempList

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.deasa10.dataList.DataList
 import com.example.deasa10.databinding.FragmentPointBinding
 
 
@@ -24,6 +25,14 @@ class PointFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var point1 = 0
+        var point2 = args.point
+
+        DataList.teamPointList.forEach {
+            point1 += it.team1.toString().toInt()
+
+        }
+
         queue = args.queue
         var count = queue
         if (count == 0) {
@@ -43,6 +52,10 @@ class PointFragment : Fragment() {
                 )
             )
         }
+
+
+        binding.tvTeam1Point.text = point1.toString()
+        binding.tvTeam2Point.text = point2.toString()
     }
 
 }
